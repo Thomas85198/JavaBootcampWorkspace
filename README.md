@@ -138,27 +138,27 @@ LastString is equal to 1050120.47
 * operands: int c = a + b，其中的a與b就是opprands，+是opperators
 * expression: 整個叫做運算式
 ```java=
-// 1 + 2 = 3
-		int result = 1 + 2; 
-		System.out.println("1 + 2 = " + result);
-		int previousResult = result;
-		System.out.println("previousResult = " + previousResult);
-		// 3 - 1 = 2
-		result = result - 1;
-		System.out.println("3 - 1 = " + result);
-		System.out.println("previousResult = " + previousResult);
-		// 2 * 10 = 20
-		result = result * 10; 
-		System.out.println("2 * 10 = " + result);
+	// 1 + 2 = 3
+	int result = 1 + 2; 
+	System.out.println("1 + 2 = " + result);
+	int previousResult = result;
+	System.out.println("previousResult = " + previousResult);
+	// 3 - 1 = 2
+	result = result - 1;
+	System.out.println("3 - 1 = " + result);
+	System.out.println("previousResult = " + previousResult);
+	// 2 * 10 = 20
+	result = result * 10; 
+	System.out.println("2 * 10 = " + result);
 		
-		// 20 / 5 = 4
-		result = result / 5;
-		System.out.println("20 / 5 = " + result);
-		// the remainder of (4 % 3) = 1
-		result = result % 3;
-		System.out.println("4 % 3 = " + result);
-		previousResult = result;
-		System.out.println("previousResult = " + previousResult);
+	// 20 / 5 = 4
+	result = result / 5;
+	System.out.println("20 / 5 = " + result);
+	// the remainder of (4 % 3) = 1
+	result = result % 3;
+	System.out.println("4 % 3 = " + result);
+	previousResult = result;
+	System.out.println("previousResult = " + previousResult);
 ```
 Console:
 1 + 2 = 3
@@ -202,7 +202,112 @@ isCar = true;
 		}
 ```
 * 如果wasCar = isCar 正確等於true，錯誤等於false
+---
+## KeywordsAndExpression Project
+### Main.java
+⭐️ ***這邊有點不確定***
+* Expression Component: 有變數以及運算式
+```java=
+double kilometers = (100 * 1.609344);
+```
+## StatementWhiteSpaceAndIndenting
+### Main.java
+```java=
+	
+	int anotherVariable = 50;myVariable--;System.out.println("This is another one");
+	int                       myVariable1 = 
+		20;
+```
+* Statement可以寫在同一行但不建議
+* 空白是會被忽略的
+```java=
+	if(gameOver == true) {
+		int finalScore = score + (levelCompleted * bonus);
+		System.out.println("Your final score was " + finalScore);
+		}
+		
+	// 寫在這邊會看不到if裡面finaScore的區域變數
+	int savedFinalScore = finalScore;
+```
+* if裡面製造變數只要脫離code block就結束，所以外面無法使用
+```java=
+		if (score < 5000 && score > 1000) {
+			System.out.println("Your score was less than 5000 but greater than 1000");
+		} else if(score < 1000) {
+			System.out.println("Your score less than 1000");
+		} else {
+			System.out.println("This was executed");
+		}
+```
+* 如果第一條if就被成立，Java的執行會立即跳出if判斷式
+---
+## IfKeyWordAndCodeBlocks Project
+### Main.java
+#### 方法 Method
+> 解決太煩人的重複操作
+1. static 不給值：
+```java=
+	public static void calculateScoreOriginal() {
+		boolean gameOver = true;
+		int score = 100;
+		int levelCompleted = 2;
+		int bonus = 3;
+		
+		if(gameOver == true) {
+			int finalScore = score + (levelCompleted * bonus);
+			finalScore+=1000;
+			System.out.println("Your final score was " + finalScore);
+		}
+	}
+		
+```
+* 給static只會吸道全域變數，所以Main class內的區域變數無法使用，必須在該class設初始值
+```java=
+		boolean gameOver = true;
+		int score = 100;
+		int levelCompleted = 2;
+		int bonus = 3;
+		
+		calculateScoreOriginal();
+		
+		gameOver = false;
+		
+		calculateScoreOriginal();
+```
+* 不會因為在Main class做這樣設定而有所改變
+2. static給值：
+```java=
+public static void calculateScore(boolean gameOver, int score, int levelCompleted, int bonus) {
+	if(gameOver == true) {
+		int finalScore = score + (levelCompleted * bonus);
+		finalScore+=1000;
+			System.out.println("Your final score was " + finalScore);
+		}
+	}
 
+```
+* 這樣在括弧裡面已經宣告過，就無法在方法內給初始值
+```java=
+	// 執行方法
+	calculateScore(true, 800, 5, 100);
+```
+* 這樣執行方法
+3. 設定return 
+```java=
+public static int calculateScoreInt(boolean gameOver, int score, int levelCompleted, int bonus) {
+		if(gameOver == true) {
+			int finalScore = score + (levelCompleted * bonus);
+			finalScore+=1000;
+			return finalScore;
+		}else {
+			return -1;
+		}
+	}
+```
+* 在Main裡面宣告就可以給一個int變數：
+```java=
+int highScore = calculateScoreInt(gameOver, score, levelCompleted, bonus);
+		System.out.println("Your final score was " + highScore);
+```
 
-
-
+		
