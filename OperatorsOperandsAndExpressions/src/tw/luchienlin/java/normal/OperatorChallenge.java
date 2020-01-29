@@ -14,7 +14,6 @@ public class OperatorChallenge {
 		double myReminder = myTotal % 40.00;
 		System.out.println("myReminder = " + myReminder);
 		
-		// 因為boolen如果=0會是false
 		boolean myBoolean = (myReminder == 0)? true : false;
 		
 		System.out.println(myBoolean);
