@@ -3,7 +3,7 @@ package tw.luchienlin.java.normal;
 public class Practice {
 
 	public static void main(String[] args) {
-		
+	
 	int highScorePosition = calculateHighScorePosition(1500);
 	displayHighScorePosition("Thoams", highScorePosition);
 	
