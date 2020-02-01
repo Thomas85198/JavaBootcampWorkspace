@@ -345,4 +345,105 @@ public class BarkingDog {
     }
 }
 ```
+---
+# 2019/02/01
+## MethodOverloading project
+### Main.java
+> 多載介紹：型別一樣只是最後的引數不同的同名方法
+#### 寸轉公分 多載Overloading
+```java=
+public static int calculateScore(String playerName, int score) {
+		System.out.println("Player " + playerName + " scored " + score + " points");
+		return score * 1000;
+	}
+	
+	public static int calculateScore(int score) {
+		System.out.println("Unnamed player scored " + score + " points");
+		return score * 1000;
+	}
+	
+	public static int calculateScore() {
+		System.out.println("No player name, no player score.");
+		return 0;
+	}
+	
+	// 寸轉公分
+	public static double calcFeetAndInchesToCentimeters(double feet, double inches) {
+		
+		if(feet < 0 || (inches < 0 && inches > 12)) {
+			System.out.println("Invalid");
+			return -1; 
+		}else {
+			double centimeters = (feet * 12) * 2.54;
+			centimeters += inches * 2.54;
+			System.out.println(feet + " feet, " + inches + " inches = " + centimeters + " cm");
+			return centimeters;
+		}
+	}
+```
+* Method Overloading 允許我們可以有多個名稱相同的方法，但用不同的引數(parameters)
+* 盡量用多載去設計方法，避免同功能名稱不同的方法出現，增加易讀性與重複使用性
+* Main方法本身就是一個Overloading，准許我們print String, int...
+#### INVALID_VALUE_MESSAGE 錯誤訊息全域變數
+```java=
+private static final String INVALID_VALUE_MESSAGE = "Invalid value";
+public static String getDurationString(int mins, int secs) {
+
+		if (mins < 0 || (secs < 0 || secs > 59)) {
+			return INVALID_VALUE_MESSAGE;
+		} else {
+			// 小時等於分鐘/60整除
+			// 餘數的分鐘等於新的分鐘
+			// 秒數/60的+分鐘
+			// 秒數等於剩餘的秒數
+			// 1小時等於3600秒
+			// 秒數不用因為沒超過60
+			int hours = mins / 60;
+			// 把原本輸入的分鐘數減少
+			mins = mins % 60;
+			
+			// 如果還沒大於10的話前面要加一個0
+			String hoursString = hours + "h";
+			if(hours < 10) {
+				hoursString = "0" + hoursString;
+			}
+			
+			String minutesString = mins + "m";
+			if(mins < 10) {
+				minutesString = "0" + minutesString;
+			}
+			
+			String secondsString = secs + "s";
+			if(secs < 10) {
+				secondsString = "0" + secondsString;
+			}
+			
+//			return (hours + "h " + mins + "m " + secs + "s ");
+			return hoursString + " " + minutesString + " " + secondsString + " ";
+		}
+	}
+```
+## PlayCat Project
+### PlayingCat.java
+>判斷布林值，但寫法有點高超，值得參考
+```java=
+package tw.luchienlin.java.overloading;
+
+public class PlayingCat {
+
+	public static void main(String[] args) {
+
+		isCatPlaying(true, 33);
+	}
+
+	// 超級高超寫法
+	// 值得參考
+	public static boolean isCatPlaying(boolean summer, int temp) {
+		return (summer && (temp > 24 && temp < 46)) || (!summer && (temp > 24 && temp < 36));
+	}
+}
+```
+
+
+
 		
