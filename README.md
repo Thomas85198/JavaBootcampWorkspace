@@ -424,7 +424,7 @@ public static String getDurationString(int mins, int secs) {
 	}
 ```
 ## PlayCat Project
-### PlayingCat.java
+### ⭐️PlayingCat.java
 >判斷布林值，但寫法有點高超，值得參考
 ```java=
 package tw.luchienlin.java.overloading;
@@ -441,6 +441,84 @@ public class PlayingCat {
 	public static boolean isCatPlaying(boolean summer, int temp) {
 		return (summer && (temp > 24 && temp < 46)) || (!summer && (temp > 24 && temp < 36));
 	}
+}
+```
+---
+## Switch Porject
+### Main.java
+#### switch method
+> switch只探討一個value，探討一個變數等於哪個值的時候很好用
+```java=
+public static void main(String[] args) {
+		
+		int switchValue = 1;
+		
+		switch(switchValue) {
+			case 1:
+				System.out.println("Value was 1");
+				break;
+				
+			case 2:
+				System.out.println("Value was 2");
+				break;
+			case 3: case 4: case 5:
+				System.out.println("Value was 3, 4, or 5")
+				break;
+			default: 
+				System.out.println("Was not 1 or 2");
+				break;
+		}
+
+		//  break會跳到這邊
+	}
+```
+* break會直接跳出迴圈
+* 如果沒有break會一直跳到有break或default
+#### ⭐️theLeapYear 進階：
+> 輸出月份以及年且需要判斷當年是否為閏年，2月有差
+```java=
+public class NumberOfDaysInMonth {
+    public static boolean isLeapYear(int year){
+        if(year < 1 || year > 9999){
+            return false;
+         }
+         else if(year % 4 == 0){
+             if(year % 100 == 0){
+                 if(year % 400 == 0){
+                     return true;
+                 }
+                 else
+                     return false;
+             }
+             else
+                 return true;
+         }
+         else
+             return false;
+    }
+ 
+    public static int getDaysInMonth(int month, int year){
+         if(year < 1 || year > 9999){
+            return -1;
+         }
+         else
+            switch(month){
+                case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                    return 31;
+                case 2:
+                    if(isLeapYear(year)){
+                        return 29;
+                    }
+                    else{
+                        return 28;
+                    }
+                case 4: case 6: case 9: case 11:
+                    return 30;
+                    
+                default:
+                    return -1;
+            }
+    } 
 }
 ```
 
