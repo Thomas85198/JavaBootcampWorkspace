@@ -521,6 +521,45 @@ public class NumberOfDaysInMonth {
     } 
 }
 ```
+# 2019/02/05
+## ForLoop project
+### Main.java
+#### 如何寫小數點第幾位
+```java=
+		for (int i = 8; i >= 2; i--) {
+			System.out.println(
+					"10,000 at " + i + "% interest = " + String.format("%.2f", calculateInterest(10000.0, (double) i)));
+		}
+```
+* 小數點只有兩位
+* 使用String.format的方法
+### Main.java
+#### 判斷是不是質數 
+```java=
+// Create a for statement using any range of numbers
+// Determing if the number is prime number using the isPrime method
+// if it is a prime, print it out AND increment a count of the number of prime numbers found
+// if that count is 3 exit the for loop
+	
+	
+	// 判斷是不是Prime number
+	public static boolean isPrime(int n) {
+		if(n == 1) {
+			return false;
+		}
+		// 寄算平方根，不然就是i <= n/2
+		for (int i=2; i<=(long)Math.sqrt(n); i++) {
+			System.out.println("Lopping" + i);
+			if(n%i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+```
+* Math.sqrt(n)是平方根
+* 不然就用i<=n/2
+
 
 
 
