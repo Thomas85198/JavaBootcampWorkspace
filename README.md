@@ -559,7 +559,72 @@ public class NumberOfDaysInMonth {
 ```
 * Math.sqrt(n)是平方根
 * 不然就用i<=n/2
+---
+# 2019/02/07
+## WhileLoop project
+### Main.java
+#### 判斷是不是偶數並用while迴圈執行
+```java=
+int number = 4;
+		int finishNumber = 20;
+		while(number <= finishNumber) {
+			number++;
+			if(!isEvenNumber(number)) {
+				// 如果不是偶數則跳出if block
+				continue;
+			}
+			System.out.println("Even number " + number);
+		}
+		
+		
+		
+		
+	}
+	
+	public static boolean isEvenNumber(int num) {
+		if(num%2 == 0) {
+			return true;
+		}
+		return false;
+	}
+```
+#### while, do while break and continue Recap
+* while迴圈是用來在一開始判斷條件
+* do while是至少執行一次，再判斷條件
+* 請時常確認條件，以防進入無窮迴圈
 
+#### while, do while break and continue Recap
+* 打斷透過**continue**或**break**
+* continue中斷當時的那個條件，直接進入下一個while判斷
+* break直接跳離while迴圈
+
+### DigitSumChallenge.java
+#### ⭐️判斷大於等於10後的數字各位數相加
+```java=
+public static int sumDigits(int number) {
+		if(number < 10) {
+			return -1;
+			
+		} 
+		
+		int sum = 0;
+			// 125 -> 125 / 10 = 12 * 10 --> 125 - 120 = 5 
+			// 十位適用numbers/10去算
+			// 百位
+		while(number > 0) {
+			// 最小的
+			// extract the least-significant digit
+			int digit = number % 10;
+			sum += digit;
+			
+			// drop the least-significant digit
+			// 每次就會往前提一位
+			number /= 10; // same as number = number / 10;
+			
+		}
+		return sum;
+	}
+```
 
 
 
