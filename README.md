@@ -625,6 +625,32 @@ public static int sumDigits(int number) {
 		return sum;
 	}
 ```
+---
+## 2019/02/08
+### ParsingValueFromString project
+#### Main.java
+> 教學如何從String轉數值做運算
+* 運用Wrapper才有parseInt
+* 但如果有不符數值的東西轉成數值就會錯
+```java=
+String numberAsString = "2018.125";
+		System.out.println("numberAsString= " + numberAsString);
+		
+		// 數字轉字串
+		// Wrapper Class
+		// Wrapper Class有parseInt
+		// 但如果有其他不能計算的字就會有誤
+		double number = Double.parseDouble(numberAsString);
+		System.out.println("number = " + number);
+		
+		numberAsString += 1;
+		number += 1;
+		
+		// 字串+1，就是後面加一
+		// 數值才會+1
+		System.out.println("numberAsString = " + numberAsString);
+		System.out.println("number = " + number);
+```
 
 
 
