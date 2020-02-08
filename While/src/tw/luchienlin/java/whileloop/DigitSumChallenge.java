@@ -24,6 +24,7 @@ public class DigitSumChallenge {
 			sum += digit;
 			
 			// drop the least-significant digit
+			// 每次就會往前提一位
 			number /= 10; // same as number = number / 10;
 			
 		}
