@@ -651,6 +651,163 @@ String numberAsString = "2018.125";
 		System.out.println("numberAsString = " + numberAsString);
 		System.out.println("number = " + number);
 ```
+---
+## 2019/02/12
+### While project
+#### NumbersToWord.java
+> ⭐️這題精華的運用，寫三個方法一個判斷幾位數，一個將數字倒過來，並要以文字印出
+```java=
+package tw.luchienlin.java.whileloop;
+
+public class NumbersToWords {
+
+	public static void main(String[] args) {
+		numberToWords(0);
+		
+		numberToWords(1);
+		
+	}
+	public static int getDigitCount(int number) {
+		// 計算有幾位數
+		int count = 0;
+		if(number < 0) {
+			return -1;
+		} else {
+			while(number / 10 != 0) {
+				number = number/10;
+				count++;
+			}
+			return count+1;
+		}
+	}
+	
+	public static int reserve(int number) {
+		int reserve = 0;
+		int digit;
+		while(number != 0) {
+			digit = number % 10;
+			// reserve * 10+剩餘的個位數
+			reserve = reserve * 10 + digit;
+			number = number / 10;
+		}
+		return reserve;
+	}
+	
+	public static void numberToWords(int number) {
+		int digitCount = getDigitCount(number);
+		number = reserve(number);
+		// last digit 最後一位
+		if(number < 0) {
+			System.out.println("Invalid Value");
+		}
+		
+		while(digitCount > 0) {
+			switch(number%10) {
+			case 0:
+				System.out.println("Zero");
+				break;
+			case 1:
+				System.out.println("One");
+				break;
+			case 2:
+				System.out.println("Two");
+				break;
+			case 3:
+				System.out.println("Three");
+				break;
+			case 4:
+				System.out.println("Four");
+				break;
+			case 5:
+				System.out.println("Five");
+				break;
+			case 6:
+				System.out.println("Six");
+				break;
+			case 7:
+				System.out.println("Seven");
+				break;
+			case 8:
+				System.out.println("Eight");
+				break;
+			case 9:
+				System.out.println("Nine");
+				break;
+			}
+			number=number/10;	
+			digitCount--;
+		}
+		
+		}
+		
+	}
+```
+### ParsingValuesFromString project
+#### LargestPrime.java
+> ⭐️我完全不知道這題在幹嘛，盼對最大質數要看過
+```java=
+package tw.luchienlin.java.common;
+
+public class LargestPrime {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(getLargestPrime(4444));
+	}
+	public static int getLargestPrime(int number) {
+			int count = number;
+			int primeCount = 0;
+			int largestPrime = 0;
+			
+			// 先判斷 0, 1 與負數
+			if(number <= 1) {
+				return -1;
+			}
+			while(count > 0) {
+				for(int i=1; i<=number; i++) {
+					if(count == 1) {
+						break;
+					}
+				
+					if(i <= count) {
+						if(count % i == 0) {
+							primeCount++;
+						}
+						
+						if(count == i && primeCount == 2) {
+							if(number % count == 0) {
+								largestPrime = count;
+								count = 1;
+							}
+						}
+					}
+				}
+				count--;
+				primeCount = 0;
+			}
+			return largestPrime;
+	}
+}
+```
+#### Diagonal Star.java
+> 判斷星星
+四個條件用，boolean值去做
+```java=
+	public static void printSquareStar(int number) {
+		
+		if(number<5) {
+			System.out.println("Invalid Vlaue");
+		}else {
+			for(int row = 1; row <= number; row++) {
+				for(int col = 1; col <= number; col++) {
+					boolean isStar = (row == 1) || (col == 1) || (row == number) || (col == number) || (row == col) ||(col == number-row+1);
+					System.out.print(isStar ? "*" : " " );
+				}
+				System.out.println();
+			}
+		}
+	}
+```
 
 
 
