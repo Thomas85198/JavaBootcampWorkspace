@@ -808,7 +808,143 @@ public class LargestPrime {
 		}
 	}
 ```
+---
+## 2019/02/14
+### ReadingUserInput project
+#### Main.java
+```java=
+// Build in class let can read user input
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter your name: ");
+		String name = scanner.nextLine();
+		
+		// name 當成要抓取輸入的變數
+		System.out.println("Your name is " + name);
+		
+		scanner.close();
+```
+* 結束要放一個Scanner.close();
+#### 如果遇到要輸入兩次，以及兩個問題？
+```java=
+	// Build in class let can read user input
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Enter your year of birth:");
+		int yearOfBirth = scanner.nextInt();
+		scanner.nextLine();
+		
+		System.out.println("Enter your name: ");
+		String name = scanner.nextLine();
+		int age = 2018 - yearOfBirth;
+		
+		// name 當成要抓取輸入的變數
+		System.out.println("Your name is " + name);
+		
+		System.out.println("Your birth is " + yearOfBirth);
+		
+		System.out.println("Your are " + age + " years old.");
+		
+		scanner.close();
+```
+* Scanner.nextLine()是關鍵
+#### 防止錯誤輸入，做變數條件判斷
+```java=
+			// 做判斷
+			if(age >= 0 && age <= 100) {
+				System.out.println("Your name is " + name + ", and you are " + age + " years old.");
+			} else {
+				System.out.println("Invalid year of birth");
+			}
+```
+#### boolean值判斷是否有hasNextInt
+> 判斷是否接下來Int值，如果輸錯會跳到else
+```java=
+Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Enter your year of birth:");
+		
+		boolean hasNextInt = scanner.hasNextInt();
+		
+		if(hasNextInt) {
+			int yearOfBirth = scanner.nextInt();
+			scanner.nextLine();
+			
+			System.out.println("Enter your name: ");
+			String name = scanner.nextLine();
+			int age = 2018 - yearOfBirth;
+			
+			// 做判斷
+			if(age >= 0 && age <= 100) {
+				System.out.println("Your name is " + name + ", and you are " + age + " years old.");
+			} else {
+				System.out.println("Invalid year of birth");
+			}
+			
+			// name 當成要抓取輸入的變數
+			System.out.println("Your name is " + name);
+			
+			System.out.println("Your birth is " + yearOfBirth);
+			
+			System.out.println("Your are " + age + " years old.");
+		} else {
+			System.out.println("Unable to parse year of birth");
+		}
+		
+		scanner.close();
+		
+	}
+```
+### 對於輸入的值，印出最大值與最小：
+⭐️不太懂在幹嘛，然後比大小很重要
+```java=
+package MinAndMaxInputChallenge;
 
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		int min = Integer.MAX_VALUE;
+		int max = Integer.MIN_VALUE;
+		// boolean first = true;
+				
+		while(true) {
+			System.out.println("ENTER NUMBER:");
+			boolean isAnInt = scanner.hasNextInt();
+			
+			if(isAnInt) {
+				int number = scanner.nextInt();
+				// 不太懂flag在這邊的事情
+//				if(first) {
+//					first = false;
+//					min = number;
+//					max = number;
+//				}
+//				
+				if(number > max) {
+					max = number;
+				}
+				
+				if(number < min) {
+					min = number;
+				}
+			} else {
+				break;
+			}
+			
+			scanner.nextLine();
+			
+			
+		}
+		System.out.println("min= " + min + ", max= " + max);
+		scanner.close();
+	}
+
+}
+```
 
 
 		
