@@ -1005,7 +1005,52 @@ public Account() {
 		System.out.println("Empty constructor called");
 	}
 ```
-> 呼叫另一個
-#### Main.java件ㄍㄡ
-#### Main.java
+> 呼叫另一個建構子
+* 在建構子內就不要去用下面的set方法，直接給值，雖然用了也不會錯，但不建議
+* 建構子呼叫必須是第一句
+* 設計邏輯最好是一個建構子對應fields其他的this
+```java=
+	// 建構子
+	public Account() {
+		// 呼叫另一個建構子
+		this("56789", 2.50, "Default name", "Default address", "default phone");
+		System.out.println("Empty constructor called");
+	}
+	
+	public Account(String number, double balance, String customerName, String customerEmailAddress, String customerPhoneNumber) {
+		System.out.println("Account constructor with parameters called");
+		this.number = number;
+		this.balance = balance;
+		this.customerName = customerName;
+		this.customerEmailAddress = customerEmailAddress;
+		this.customerPhoneNumber = customerPhoneNumber;
+	}
+	
+	public Account(String customerName, String customerEmailAddress, String customerPhoneNumber) {
+		// 建構子呼叫必須是第一個
+		// 透過上一個呼叫並設定預設值
+		this("99999", 100.55, customerName, customerEmailAddress, customerPhoneNumber);
+	}
+```
+#### Point.java and Main.java
+#### class裡面宣告物件參數
+> 這樣就可以在Main裡面使用其他new過的物件當作參數
+```java=
+// 宣告物件參數，裡面可以給其他物件名稱
+	public double distance(Point another) {
+		return distance(another.x, another.y);
+		
+	}
+```
+Main.java
+```java=
+Point first = new Point(6, 5);
+		Point second = new Point(3, 1);
+		System.out.println("distance(0,0)= " + first.distance());
+		System.out.println("distance(second)= " + first.distance(second));
+		System.out.println("distance(2,2)= " + first.distance(2, 2));
+		Point point = new Point();
+		System.out.println("distance()= " + point.distance());
+```
+
 
