@@ -309,7 +309,7 @@ public static int calculateScoreInt(boolean gameOver, int score, int levelComple
 int highScore = calculateScoreInt(gameOver, score, levelCompleted, bonus);
 		System.out.println("Your final score was " + highScore);
 ```
-# 2019/01/31
+# 2020/01/31
 ## SpeedConverter project
 ### SpeedConverter.java
 > 這邊是在教學code excerise，重點不是程式碼，是使用過程中，所學的一些範例用到的方法紀錄
@@ -346,7 +346,7 @@ public class BarkingDog {
 }
 ```
 ---
-# 2019/02/01
+# 2020/02/01
 ## MethodOverloading project
 ### Main.java
 > 多載介紹：型別一樣只是最後的引數不同的同名方法
@@ -521,7 +521,7 @@ public class NumberOfDaysInMonth {
     } 
 }
 ```
-# 2019/02/05
+# 2020/02/05
 ## ForLoop project
 ### Main.java
 #### 如何寫小數點第幾位
@@ -560,7 +560,7 @@ public class NumberOfDaysInMonth {
 * Math.sqrt(n)是平方根
 * 不然就用i<=n/2
 ---
-# 2019/02/07
+# 2020/02/07
 ## WhileLoop project
 ### Main.java
 #### 判斷是不是偶數並用while迴圈執行
@@ -626,7 +626,7 @@ public static int sumDigits(int number) {
 	}
 ```
 ---
-## 2019/02/08
+# 2019/02/08
 ### ParsingValueFromString project
 #### Main.java
 > 教學如何從String轉數值做運算
@@ -652,7 +652,7 @@ String numberAsString = "2018.125";
 		System.out.println("number = " + number);
 ```
 ---
-## 2019/02/12
+# 2020/02/12
 ### While project
 #### NumbersToWord.java
 > ⭐️這題精華的運用，寫三個方法一個判斷幾位數，一個將數字倒過來，並要以文字印出
@@ -809,7 +809,7 @@ public class LargestPrime {
 	}
 ```
 ---
-## 2019/02/14
+# 2020/02/14
 ### ReadingUserInput project
 #### Main.java
 ```java=
@@ -955,5 +955,57 @@ protected 這個package可以使用
 * 在class宣告變數field，就必須一樣要有修飾字，一般都會用private
 * 要利用class裡面的東西就要宣告物件new
 * 如果都沒有寫方法java會有些物件可以內建使用方法
+--- 
+# 2020/02/15
+## Class project
+#### Main.java
+#### get set取private field
+```java=			
+		Car porsche = new Car();
+		Car holden = new Car();
+		
+		System.out.println("Modal is " + porsche.getModal());
 
+		porsche.setModal("Carrera");
+		
+		System.out.println("Modal is " + porsche.getModal());
+```
+* 預設getModal()是null，所以第一個還沒有setModal是print out Modal is null
+* set的用處是給值以外，也可以加入商業邏輯判斷...
+* get就是取值
+
+```java=
+// 裡面的String modal跟上面的不一樣
+	public void setModal(String modal) {
+		// 如果要將值傳同名的到上面就要用this
+		String validModal = modal.toLowerCase();
+		// String.equals是去判斷String的值
+		if(validModal.equals("porsche") || validModal.contentEquals("holden")) {
+			this.modal = modal;
+		} else {
+			this.modal = "Unkown";
+		}
+		
+	}
+	
+	public String getModal() {
+		return this.modal;
+	}
+```
+* .equals是String判斷內容的方法
+* this.firstName.isEmpty()：判斷是否為空字串
+---
+## Constructor project
+#### Main.java
+#### 建構子裡面使用this
+```java=
+public Account() {
+		// 呼叫另一個建構子
+		this("56789", 2.50, "Default name", "Default address", "default phone");
+		System.out.println("Empty constructor called");
+	}
+```
+> 呼叫另一個
+#### Main.java件ㄍㄡ
+#### Main.java
 
