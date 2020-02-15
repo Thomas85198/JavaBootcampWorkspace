@@ -894,7 +894,7 @@ Scanner scanner = new Scanner(System.in);
 		
 	}
 ```
-### 對於輸入的值，印出最大值與最小：
+#### 對於輸入的值，印出最大值與最小：
 ⭐️不太懂在幹嘛，然後比大小很重要
 ```java=
 package MinAndMaxInputChallenge;
@@ -945,6 +945,15 @@ public class Main {
 
 }
 ```
+---
+### Class project
+#### Main.java
+#### 修飾字權限
+> public 不受限制的修飾字
+private 沒有其他可以使用該class
+protected 這個package可以使用
+* 在class宣告變數field，就必須一樣要有修飾字，一般都會用private
+* 要利用class裡面的東西就要宣告物件new
+* 如果都沒有寫方法java會有些物件可以內建使用方法
 
 
-		
