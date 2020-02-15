@@ -1052,5 +1052,44 @@ Point first = new Point(6, 5);
 		Point point = new Point();
 		System.out.println("distance()= " + point.distance());
 ```
+---
+## Inheritance project
+### Dog.java Main.java Animal.java
+#### 繼承
+> 繼承別人一定要有父類別的建構子
+* super就是呼叫父層的東西
+* 子層可以複寫Override父層的方法
+```java=
+public class Dog extends Animal {
+	
+	private int eyes;
+	private int legs;
+	private int tail;
+	private int teeth;
+	private String cont;
 
+	public Dog(String name, int size, int weight, int eyes, int legs, int tail, int teeth, String cont) {
+		// 繼承來自父類別的參數
+		super(name, 1, 1, size, weight);
+		this.eyes = eyes;
+		this.legs = legs;
+		this.tail = tail;
+		this.teeth = teeth;
+		this.cont = cont;
+	}
+	
+	private void chew() {
+		System.out.println("Dog.chew() called");
+	}
+
+	// 寫他
+	@Override
+	public void eat() {
+		System.out.println("Dog.eat() called");
+		chew();
+		super.eat();
+	}
+	
+```
+* 以上為子層
 
