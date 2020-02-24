@@ -1092,4 +1092,81 @@ public class Dog extends Animal {
 	
 ```
 * 以上為子層
+---
+# 2020/2/24
+#### THIS VS SUPER
+* this vs super 可以用在任何地方，除了static的部分
+* super是用在要寫Override父層的方法時使用，因為要呼叫父層方法：
+```java=
+@Override
+public void printMethod(){
+	super.printMethod() //呼叫父層的方法
+	}
+}
+```
+* 呼叫parent的建構子，super()
+* Java會自動帶一個建構子，裡面含有super()，如果我們沒有特別寫
+* 建構子可以有super、this但不能兩個同時
+#### 好的Constructor寫法：
+```java=
+public class Rectangle {
+	private int x;
+	private int y;
+	private int width;
+	private int height;
+	
+	
+	
+	public Rectangle() {
+		this(0,0);
+	}
+		
+	public Rectangle(int width, int height) {
+		this(0,0,width,height);
+	}	
+	
+	public Rectangle(int x, int y, int width, int height) {
+		super();
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+	}
 
+	
+}
+```
+#### Super
+```java=
+public class Shape {
+	private int x;
+	private int y;
+	
+	public Shape(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+	}
+	
+	
+}
+
+class Square extends Shape {
+
+	private int width;
+	private int height;
+	
+	public Square(int x, int y) {
+		this(x,y,0,0);
+	}
+	
+	public Square(int x, int y, int width, int height) {
+		super(x, y); // calls the parent (shape)
+		this.width = width;
+		this.height = height;
+	}
+
+	
+	
+}
+```
