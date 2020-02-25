@@ -1193,3 +1193,41 @@ class TestSuper4 {
 編譯結果：
 animal is created
 dog is created
+---
+# 2020/2/25
+#### Overloading
+> 給予使用者同方法名稱、不同參數，讓撰寫不必記得一堆參數
+* 也可以透過繼承達到子類別負載父類別
+只要遵守定義：不同修飾字、回傳值可同可不同
+#### Overriding 就像IS A relationship
+> 定義一個子方法然後父層已經有的並修改他
+* **same name and same argus**
+* 回傳值可以是父層也可以子層自己指定，但是回傳型別要相同
+* **不能比父層修飾字低階**
+ex. public > protected > private
+* 只有繼承才有覆寫
+* **建構子以及private不能**
+* final的方法也不行
+* **子曾利用super.methodName()去呼叫superclass
+```java=
+class Burger {
+}
+class HealthyBurger extends Burger {
+}
+```
+```java=
+class BurgerFactory {
+  public Burger createBurger(){
+  	return new Burger()
+  }
+}
+
+class HealthyBurgerFactory extends BurgerFactory {
+
+  @Override
+  public HealthyBurger createBurger() {
+  	return new HealthyBurger();
+  }
+}
+```
+https://magiclen.org/hackerrank-covariant-return-types/
