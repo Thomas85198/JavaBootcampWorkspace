@@ -1170,3 +1170,26 @@ class Square extends Shape {
 	
 }
 ```
+#### 如果沒有super，編譯器會自動給一個在子層的無參數建構子
+```java=
+class Animal {
+    Animal() {
+        System.out.println("animal is created");
+    }
+}
+
+class Dog extends Animal {
+    Dog() {
+        System.out.println("dog is created");
+    }
+}
+
+class TestSuper4 {
+    public static void main(String args[]) {
+        Dog d = new Dog();
+    }
+}
+```
+編譯結果：
+animal is created
+dog is created
