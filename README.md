@@ -1231,3 +1231,41 @@ class HealthyBurgerFactory extends BurgerFactory {
 }
 ```
 https://magiclen.org/hackerrank-covariant-return-types/
+---
+# 2020/2/26
+#### static and instance method
+* static methods不能與實體化方法或是實體化變數同時使用
+* 他不用new
+* 他就不會用到this
+* 呼叫方法ClassName.methodName();除非是一樣的ClassName才能直接寫methodName();
+* instance method就是平常在使用的要new的物件，也可以直接使用static method
+#### 設計邏輯
+探討方法要不要用static➡️需要使用fields或methods嗎➡️不用則static要則instance
+
+#### Static Variables
+* 透過static宣告的變數
+* 所有使用這個static變數的人值都一樣，如果改變了則全部都會變
+```java=
+class Dog {
+	private static String name;
+	
+	public Dog(String name){
+		Dog.name = name;
+	}
+	public void printName() {
+		System.out.println("name = " + name);
+	}
+}
+public class Main {
+	public static void main(String[] args){
+		Dog rex = new Dog("rex"); // create instance(rex)
+		Dog fluffy = new Dog("fluffy"); // create instance (fluffy)
+		rex.printName(); // print fluffy
+		fluffy.printName(); // print fluffy
+	}
+}
+}
+```
+#### instance
+> 上面如果不是static就會獨立印出rex, fluffy
+	
